@@ -71,7 +71,7 @@ public class Moving : MonoBehaviour
         }
 
 
-        Debug.DrawRay(transform.position, moveForce.normalized * 5);
-        Debug.DrawRay(transform.position, transform.forward  * 5, Color.black);     
+        Debug.DrawRay(transform.position, moveForce.normalized * 10, Color.red);
+        Debug.DrawRay(transform.position, transform.forward  * 10, Color.black);     
     }
 }
