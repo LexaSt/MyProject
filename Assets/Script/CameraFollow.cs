@@ -7,10 +7,16 @@ public class CameraFollow : MonoBehaviour
     public GameObject target;
     private float CameraSpeed = 100f;
     public Vector3 offSet;
+   
 
     private void Update()
     {
         Vector3 ToMove = target.transform.position + offSet;
         transform.position = Vector3.MoveTowards(transform.position, ToMove, CameraSpeed*10*Time.deltaTime);
+        
+        
+     //   Quaternion quaternion = target.transform.rotation;
+        
+       // transform.Rotate(quaternion.x, quaternion.y, 0);
     }
 }
