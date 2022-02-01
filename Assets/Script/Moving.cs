@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Moving : MonoBehaviour
 {
-    public float startSpeed;
+    private float moveSpeed=120f;
     public float maxSpeed;
-    public float accelerate;
+    public float accelerate=0.5f;
 
     public Rigidbody Player;
     public float speedRotate;
@@ -24,44 +24,49 @@ public class Moving : MonoBehaviour
     private void FixedUpdate()
     {
         moveForce += transform.forward * Time.deltaTime * Input.GetAxis("Vertical") * accelerate;
-        Player.transform.position += moveForce * startSpeed * Time.deltaTime;
-        //Vector3 rotate = new Vector3(0, Input.GetAxis("Horizontal") * speedRotate * Time.deltaTime, 0);
-        //Quaternion quaternion = Quaternion.Euler(0, Input.GetAxis("Horizontal") * speedRotate * Time.deltaTime, 0);
-        Player.transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * moveForce.magnitude * speedRotate);
+        Player.transform.position += moveForce * moveSpeed * Time.deltaTime;
 
-        if (Input.GetAxis("Vertical") == 0)
+        
+        if (moveForce.magnitude < 1.3) //больший угол поворота на небольшой скорости
         {
-            moveForce -= (moveForce - new Vector3(0.01f,0,0))*Time.deltaTime;
+            Player.transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * moveForce.magnitude * 60);
         }
+        else //меньший угол поворота на большой скорости
+        {
+            Player.transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * moveForce.magnitude * speedRotate);
+        }
+
+       // if (Input.GetAxis("Vertical") == -1)
+        //{
+           // moveForce = (moveForce - new Vector3(0.1f,0,0))*Time.deltaTime;
+        //}
 
         if (Player.transform.position.y >= 1.3)
         {
-            Player.transform.position = new Vector3(Player.transform.position.x, 1.3f, Player.transform.position.z);
+            Player.transform.position = new Vector3(Player.transform.position.x, 1.2f, Player.transform.position.z);
         }
 
         moveForce = Vector3.ClampMagnitude(moveForce, maxSpeed);
-        print("SPEED " + moveForce);
+       // print("SPEED " + moveForce.magnitude*60);
     
     }
 
     private void Update()
     {
-        
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            moveForce = Vector3.zero;
-        }
-
+      
         //drift
         if (Input.GetKey(KeyCode.Space))
         {
-            if (moveForce != Vector3.zero)
+            if (moveForce.magnitude > 0.6f)
             {
                 moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, TractionHandBrake * Time.deltaTime) * moveForce.magnitude;
                 TrailRendererLeft.emitting = true;
                 TrailRendererRight.emitting = true;
             }
-            
+            else 
+            {
+                moveForce = new Vector3(0, 0, 0);
+            }
         }
         else
         {
@@ -69,9 +74,10 @@ public class Moving : MonoBehaviour
             TrailRendererLeft.emitting = false;
             TrailRendererRight.emitting = false;
         }
+        Debug.DrawRay(transform.position, moveForce.normalized * 50, Color.white);
+        Debug.DrawRay(transform.position, transform.forward * 100, Color.black);
 
-
-        Debug.DrawRay(transform.position, moveForce.normalized * 10, Color.red);
-        Debug.DrawRay(transform.position, transform.forward  * 10, Color.black);     
     }
+
+   
 }
