@@ -5,15 +5,18 @@ using UnityEngine;
 public class HingleJoint : MonoBehaviour
 {
     public HingeJoint HingeJoint;
-   
+    public UIbutton buttonLeft;
+    public UIbutton buttonRight;
+    public UIbutton buttonHandBrake;
+
 
     // Доработка физики
     void FixedUpdate()
     {
-        if (Input.GetAxis("Horizontal")==-1 & Input.GetKey(KeyCode.Space)) //удержание груза справа при повороте наналево
+        if ((Input.GetKey(KeyCode.A)|| buttonLeft.isDown) & (Input.GetKey(KeyCode.Space) || buttonHandBrake.isDown)) //удержание груза справа при повороте наналево
         {
             JointSpring jointSpring = HingeJoint.spring;
-            jointSpring.targetPosition += 1f;
+            jointSpring.targetPosition += 10f;
             if (jointSpring.targetPosition >= 45f)
             {
                 jointSpring.targetPosition = 45f;
@@ -24,10 +27,10 @@ public class HingleJoint : MonoBehaviour
             }
 
         }
-        if (Input.GetAxis("Horizontal") == 1 & Input.GetKey(KeyCode.Space)) //удержание груза слева при повороте направо
+        else if ((Input.GetKey(KeyCode.D) || buttonRight.isDown) & (Input.GetKey(KeyCode.Space) || buttonHandBrake.isDown)) //удержание груза слева при повороте направо
         {
             JointSpring jointSpring = HingeJoint.spring;
-            jointSpring.targetPosition -= 1f;
+            jointSpring.targetPosition -= 10f;
             if (jointSpring.targetPosition <= -45f)
             {
                 jointSpring.targetPosition = -45f;
@@ -37,7 +40,7 @@ public class HingleJoint : MonoBehaviour
                 HingeJoint.spring = jointSpring;
             }
         }
-        if (Input.GetAxis("Horizontal") == 0)  //груз при прямолинейном движении
+        else if (Input.GetAxis("Horizontal") == 0)  //груз при прямолинейном движении
         {
             JointSpring jointSpring = HingeJoint.spring;
             if (jointSpring.targetPosition > 0)
