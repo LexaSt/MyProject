@@ -8,12 +8,13 @@ public class HingleJoint : MonoBehaviour
     public UIbutton buttonLeft;
     public UIbutton buttonRight;
     public UIbutton buttonHandBrake;
+    public UIbutton buttonHandBrakуLow;
 
 
     // Доработка физики
     void FixedUpdate()
     {
-        if ((Input.GetKey(KeyCode.A)|| buttonLeft.isDown) & (Input.GetKey(KeyCode.Space) || buttonHandBrake.isDown)) //удержание груза справа при повороте наналево
+        if ((Input.GetKey(KeyCode.A)|| buttonLeft.isDown) & (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || buttonHandBrake.isDown || buttonHandBrakуLow.isDown)) //удержание груза справа при повороте наналево
         {
             JointSpring jointSpring = HingeJoint.spring;
             jointSpring.targetPosition += 10f;
@@ -27,7 +28,7 @@ public class HingleJoint : MonoBehaviour
             }
 
         }
-        else if ((Input.GetKey(KeyCode.D) || buttonRight.isDown) & (Input.GetKey(KeyCode.Space) || buttonHandBrake.isDown)) //удержание груза слева при повороте направо
+        else if ((Input.GetKey(KeyCode.D) || buttonRight.isDown) & (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || buttonHandBrake.isDown || buttonHandBrakуLow.isDown)) //удержание груза слева при повороте направо
         {
             JointSpring jointSpring = HingeJoint.spring;
             jointSpring.targetPosition -= 10f;

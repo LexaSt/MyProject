@@ -9,20 +9,22 @@ public class Moving : MonoBehaviour
     public float maxSpeed;
     public float accelerate = 0.5f;
     public float brakePower;
+ 
+
 
     public Rigidbody Player;
     public float speedRotate;
 
     private Vector3 moveForce;
 
-    public float TractionHandBrake;
+   // public float TractionHandBrake;
     public float Traction;
 
     public TrailRenderer TrailRendererLeft;
     public TrailRenderer TrailRendererRight;
     public TextMesh Text;
 
-    public UIbutton buttonAcc;
+    public UIbutton buttonHandBrakóLow;
     public UIbutton buttonBrake;
     public UIbutton buttonLeft;
     public UIbutton buttonRight;
@@ -86,7 +88,7 @@ public class Moving : MonoBehaviour
         {
             if (moveForce.magnitude > 0.6f)
             {
-                moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, TractionHandBrake * Time.deltaTime) * moveForce.magnitude;
+                moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, 200 * Time.deltaTime) * moveForce.magnitude;
                 TrailRendererLeft.emitting = true;
                 TrailRendererRight.emitting = true;
             }
@@ -94,6 +96,20 @@ public class Moving : MonoBehaviour
             {
                 moveForce = new Vector3(0, 0, 0);
             }
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) || buttonHandBrakóLow.isDown)
+            {
+            if (moveForce.magnitude > 0.6f)
+            {
+                moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, 48 * Time.deltaTime) * moveForce.magnitude;
+                TrailRendererLeft.emitting = true;
+                TrailRendererRight.emitting = true;
+            }
+            else
+            {
+                moveForce = new Vector3(0, 0, 0);
+            }
+
         }
         else
         {
@@ -115,7 +131,7 @@ public class Moving : MonoBehaviour
     {
 
         Text.text = (moveForce.magnitude * 60).ToString("f0");
-        Debug.DrawRay(transform.position, moveForce.normalized * 50, Color.white);
+        Debug.DrawRay(transform.position, moveForce.normalized * 50, Color.red);
         Debug.DrawRay(transform.position, transform.forward * 100, Color.black);
 
     }
