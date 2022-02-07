@@ -7,13 +7,13 @@ public class CanvasSystem : MonoBehaviour
 {
     public GameObject CanvasStart;
     public GameObject CanvasInGame;
-    //public GameObject CanvasGameOver;
+   // public GameObject CanvasGameOver;
     public GameObject text1;
     public GameObject text2;
     public GameObject text3;
     public GameObject text4;
     //public Moving moving;
-
+  
 
 
     public void ActiveCanvasStart()

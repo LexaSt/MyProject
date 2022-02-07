@@ -8,9 +8,12 @@ public class GameMenu : MonoBehaviour
 {
     public float score = 0;
     public Text text;
+    public Text scoreOnFinish;
     public Moving moving;
-   // public CanvasSystem CanvasSystem;
-   
+    public GameObject CanvasGameOver;
+    public CanvasSystem CanvasSystem;
+    
+
 
 
     public State CurrentState { get; private set; }
@@ -25,6 +28,7 @@ public class GameMenu : MonoBehaviour
     string stringSeconds;
     string stringMinutes;
     public Text time;
+    public Text timeOnFinish;
 
     public void GetScore()
     {
@@ -37,10 +41,13 @@ public class GameMenu : MonoBehaviour
 
         CurrentState = State.Won;
         moving.maxSpeed = 0;
-        ReloadLevel();
+        stringSeconds = GameSeconds.ToString("f0");
+        stringMinutes = GameMinutes.ToString("f0");
+        timeOnFinish.text = "Yore win Time: " + stringMinutes + ":" + stringSeconds;
+        scoreOnFinish.text = "Yore win Score: " + score.ToString();
+        CanvasGameOver.SetActive(!CanvasGameOver.activeSelf);
+        CanvasSystem.CanvasInGame.SetActive(!CanvasSystem.CanvasInGame.activeSelf);
        
-
-
     }
 
     public void Timer()
@@ -53,6 +60,7 @@ public class GameMenu : MonoBehaviour
         stringMinutes = GameMinutes.ToString("f0");
 
         time.text = "Time: " + stringMinutes + ":" + stringSeconds;
+        
 
         if (GameSeconds >= 60.0f)
         {
@@ -78,9 +86,10 @@ public class GameMenu : MonoBehaviour
     {
         StartCoroutine(TimerToStart());
         text.text = "Score: " + score.ToString();
+        
     }
 
-    private void ReloadLevel()
+    public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
