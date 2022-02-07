@@ -7,8 +7,8 @@ public class HingleJoint : MonoBehaviour
     public HingeJoint HingeJoint;
     public UIbutton buttonLeft;
     public UIbutton buttonRight;
-    public UIbutton buttonHandBrake;
-    public UIbutton buttonHandBrakóLow;
+    public UIbutton1 buttonHandBrake;
+    public UIbutton1 buttonHandBrakóLow;
 
 
     // Äîğàáîòêà ôèçèêè

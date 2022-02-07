@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
     public float score = 0;
     public Text text;
     public Moving moving;
+   // public CanvasSystem CanvasSystem;
+   
 
 
     public State CurrentState { get; private set; }
@@ -34,9 +37,10 @@ public class GameMenu : MonoBehaviour
 
         CurrentState = State.Won;
         moving.maxSpeed = 0;
-        print("WINNER");
-        print(stringMinutes + " : " + stringSeconds);
-        
+        ReloadLevel();
+       
+
+
     }
 
     public void Timer()
@@ -60,18 +64,25 @@ public class GameMenu : MonoBehaviour
         {
             GameMinutes = 0.0f;
         }
-        
-            
+    }
 
+    IEnumerator TimerToStart() // откладывает начало таймера на 3 сек, пока идет отсчет времени в Canvas
+    {
+
+        yield return new WaitForSeconds(3f);
+        Timer();
     }
 
 
         private void Update()
     {
-        Timer();
+        StartCoroutine(TimerToStart());
         text.text = "Score: " + score.ToString();
+    }
 
-        
+    private void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 

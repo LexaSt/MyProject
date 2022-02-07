@@ -7,31 +7,34 @@ public class Moving : MonoBehaviour
 {
     private float moveSpeed = 120f;
     public float maxSpeed;
-    public float accelerate = 0.5f;
+    public float accelerate;
     public float brakePower;
- 
 
+    public CanvasSystem CanvasSystem;
 
     public Rigidbody Player;
     public float speedRotate;
 
     private Vector3 moveForce;
 
-   // public float TractionHandBrake;
+    // public float TractionHandBrake;
     public float Traction;
 
     public TrailRenderer TrailRendererLeft;
     public TrailRenderer TrailRendererRight;
     public TextMesh Text;
 
-    public UIbutton buttonHandBrakуLow;
+    public UIbutton1 buttonHandBrakуLow;
     public UIbutton buttonBrake;
     public UIbutton buttonLeft;
     public UIbutton buttonRight;
-    public UIbutton buttonHandBrake;
+    public UIbutton1 buttonHandBrake;
+
+    public SoundDrift SoundDrift;
+    
 
     public void Move()
-    { 
+    {
         if (Input.GetKey(KeyCode.S) || buttonBrake.isDown)
         {
             moveForce += -transform.forward * Time.deltaTime * brakePower;
@@ -39,7 +42,7 @@ public class Moving : MonoBehaviour
             moveForce = Vector3.ClampMagnitude(moveForce, maxSpeed);
         }
 
-        else 
+        else
         {
             moveForce += transform.forward * Time.deltaTime * accelerate;
             Player.transform.position += moveForce * moveSpeed * Time.deltaTime;
@@ -47,7 +50,7 @@ public class Moving : MonoBehaviour
         }
     }
 
-    public void Turn() 
+    public void Turn()
     {
         if (Input.GetKey(KeyCode.A) || buttonLeft.isDown)
         {
@@ -70,7 +73,7 @@ public class Moving : MonoBehaviour
             }
             else //меньший угол поворота на большой скорости
             {
-                Player.transform.Rotate(Vector3.up *  Time.deltaTime * moveForce.magnitude * speedRotate);
+                Player.transform.Rotate(Vector3.up * Time.deltaTime * moveForce.magnitude * speedRotate);
             }
         }
 
@@ -86,6 +89,7 @@ public class Moving : MonoBehaviour
         //drift
         if (Input.GetKey(KeyCode.Space) || buttonHandBrake.isDown)
         {
+
             if (moveForce.magnitude > 0.6f)
             {
                 moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, 200 * Time.deltaTime) * moveForce.magnitude;
@@ -98,12 +102,12 @@ public class Moving : MonoBehaviour
             }
         }
         else if (Input.GetKey(KeyCode.LeftShift) || buttonHandBrakуLow.isDown)
-            {
+        {
             if (moveForce.magnitude > 0.6f)
             {
                 moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, 48 * Time.deltaTime) * moveForce.magnitude;
                 TrailRendererLeft.emitting = true;
-                TrailRendererRight.emitting = true;
+                TrailRendererRight.emitting = true;  
             }
             else
             {
@@ -118,25 +122,47 @@ public class Moving : MonoBehaviour
             TrailRendererRight.emitting = false;
         }
     }
+    IEnumerator TimeToStart()
+    {// задержка, чтобы машина не ехала перед отчетом времени
+        maxSpeed = 0;
+        accelerate = 0;
+        yield return new WaitForSeconds(3f);
+        maxSpeed = 1.8f;
+        accelerate = 0.5f;
+    }
+
+
+    public void PlaySoundDrift()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift)|| Input.GetKeyDown(KeyCode.Space))
+        {
+            SoundDrift.DriftSound();
+        }
+    }
+
+    private void Start()
+    {
+        CanvasSystem.ActiveCanvasStart();
+        StartCoroutine(TimeToStart());
+    }
+
 
     private void FixedUpdate()
     {
         Move();
         Turn();
         HandBrake();
-        
     }
 
     private void Update()
     {
-
-        Text.text = (moveForce.magnitude * 60).ToString("f0");
+        PlaySoundDrift();
+        //Text.text = (moveForce.magnitude * 60).ToString("f0");
         Debug.DrawRay(transform.position, moveForce.normalized * 50, Color.red);
         Debug.DrawRay(transform.position, transform.forward * 100, Color.black);
-
     }
 
-   
-
-
 }
+
+
+

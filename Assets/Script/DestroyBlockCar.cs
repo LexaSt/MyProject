@@ -5,7 +5,17 @@ using UnityEngine;
 public class DestroyBlockCar : MonoBehaviour
 {
 
-    // вим
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void FailSound()
+    {
+        audioSource.Play();
+    }
     public void DestroyCarBlock()
     {
         print("car destroy block");

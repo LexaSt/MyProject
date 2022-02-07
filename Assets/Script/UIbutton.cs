@@ -16,5 +16,5 @@ public class UIbutton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         isDown = false;
     }
-
 }
+
