@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
-    public GameMenu GameMenu;
+    public ScoreAndTime ScoreAndTime;
     public Rigidbody block;
     public Rigidbody redCube;
     public RedCube forSound;
@@ -17,7 +17,7 @@ public class Destroy : MonoBehaviour
         if (collision.collider.TryGetComponent(out redCube))
         {
             forSound.AudioBreak();
-            GameMenu.GetScore();
+            ScoreAndTime.GetScore();
             StartCoroutine(DestroyCorotune());  
         }
 
