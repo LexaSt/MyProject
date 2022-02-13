@@ -33,7 +33,9 @@ public class Moving : MonoBehaviour
     public SoundDrift SoundDrift;
 
     public Slider Slider;
-    
+    public Slider SliderTurnLeft; // этот слайдер предназначен дл€ версии управлени€ –учник и ѕоворо на одном слайдере  TurnAndHandBrakeOnSlider()
+    public Slider SliderTurnRight;// этот слайдер предназначен дл€ версии управлени€ –учник и ѕоворо на одном слайдере  TurnAndHandBrakeOnSlider()
+
 
     public void Move()
     {
@@ -133,16 +135,35 @@ public class Moving : MonoBehaviour
            
     }
 
+    public void TurnAndHandBrakeOnSlider()
+    {
 
+        if (SliderTurnRight.value>46)
+        {
+            Player.transform.Rotate(Vector3.up * Time.deltaTime * moveForce.magnitude * speedRotate);
+            moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, SliderTurnRight.value * Time.deltaTime) * moveForce.magnitude;
+        }
+        else if (SliderTurnLeft.value>46)
+        {
+            Player.transform.Rotate(-Vector3.up * Time.deltaTime * moveForce.magnitude * speedRotate);
+            moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, SliderTurnLeft.value * Time.deltaTime) * moveForce.magnitude;
+        }
+        else
+        { 
+            moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, 46 * Time.deltaTime) * moveForce.magnitude; 
+        }
+
+    }
+   
 
     IEnumerator TimeToStart()
-    {// задержка, чтобы машина не ехала перед отчетом времени
+    {
         maxSpeed = 0;
         accelerate = 0;
         yield return new WaitForSeconds(3f);
         maxSpeed = 1.8f;
         accelerate = 0.5f;
-    }
+    } // задержка, чтобы машина не ехала перед отчетом времени
 
 
     public void PlaySoundDrift()
@@ -164,8 +185,9 @@ public class Moving : MonoBehaviour
     {
         Move();
         Turn();
-        //HandBrake();
-        HandBrakeSlider();
+        TurnAndHandBrakeOnSlider();
+        //HandBrake(); //активируем дл€ управлени€ ручником через кнопки, также нужно будет активировать в HingleJoint
+        // HandBrakeSlider(); //активируем дл€ управлени€ ручником через слайдер, также нужно будет активировать в HingleJoint
     }
 
     private void Update()

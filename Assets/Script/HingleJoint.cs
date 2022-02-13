@@ -70,11 +70,11 @@ public class HingleJoint : MonoBehaviour
                 }
             }
         }
-    } // включаем если в MOVING активен метод HandBrake()
+    } 
 
     private void MovingWithSlider()
     {
-        if ((Input.GetKey(KeyCode.A) || buttonLeft.isDown) && (Moving.Slider.value > 46)) //удержание груза справа при повороте наналево для слайдера
+        if (((Input.GetKey(KeyCode.A) || buttonLeft.isDown) && Moving.Slider.value > 46)|| Moving.SliderTurnLeft.value > 46) //удержание груза справа при повороте наналево для слайдера
         {
             JointSpring jointSpring = HingeJoint.spring;
             jointSpring.targetPosition += 10f;
@@ -88,7 +88,7 @@ public class HingleJoint : MonoBehaviour
             }
 
         }
-        else if ((Input.GetKey(KeyCode.D) || buttonRight.isDown) && (Moving.Slider.value > 46)) //удержание груза слева при повороте направо для слайдера
+        else if (((Input.GetKey(KeyCode.D) || buttonRight.isDown) && Moving.Slider.value > 46) || Moving.SliderTurnRight.value > 46) //удержание груза слева при повороте направо для слайдера
         {
             JointSpring jointSpring = HingeJoint.spring;
             jointSpring.targetPosition -= 10f;
@@ -129,12 +129,12 @@ public class HingleJoint : MonoBehaviour
                 }
             }
         }
-    }// включаем если в MOVING активен метод HandBrakeSlider()
+    }
 
 
     void FixedUpdate()
     {
-       // MovingWithButton();
-        MovingWithSlider();
+        // MovingWithButton(); // управление ручником через кнопки, включаем если в MOVING активен метод HandBrake()
+        MovingWithSlider(); // управление ручником через слайдер, включаем если в MOVING активен метод HandBrakeSlider()
     }      
 }
