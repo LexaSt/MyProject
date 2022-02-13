@@ -31,18 +31,20 @@ public class Moving : MonoBehaviour
     public UIbutton1 buttonHandBrake;
 
     public SoundDrift SoundDrift;
+
+    public Slider Slider;
     
 
     public void Move()
     {
-        if (Input.GetKey(KeyCode.S) || buttonBrake.isDown)
+        if (Input.GetKey(KeyCode.S) || buttonBrake.isDown) //торможение кнопокой
         {
             moveForce += -transform.forward * Time.deltaTime * brakePower;
             Player.transform.position += moveForce * moveSpeed * Time.deltaTime;
             moveForce = Vector3.ClampMagnitude(moveForce, maxSpeed);
         }
 
-        else
+        else// автоматическое ускорение
         {
             moveForce += transform.forward * Time.deltaTime * accelerate;
             Player.transform.position += moveForce * moveSpeed * Time.deltaTime;
@@ -76,6 +78,7 @@ public class Moving : MonoBehaviour
                 Player.transform.Rotate(Vector3.up * Time.deltaTime * moveForce.magnitude * speedRotate);
             }
         }
+        
 
         if (Player.transform.position.y >= 1.3)
         {
@@ -84,7 +87,7 @@ public class Moving : MonoBehaviour
 
     }
 
-    public void HandBrake()
+    public void HandBrake()//ручник через кнопки
     {
         //drift
         if (Input.GetKey(KeyCode.Space) || buttonHandBrake.isDown)
@@ -105,7 +108,7 @@ public class Moving : MonoBehaviour
         {
             if (moveForce.magnitude > 0.6f)
             {
-                moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, 48 * Time.deltaTime) * moveForce.magnitude;
+                moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, 47 * Time.deltaTime) * moveForce.magnitude;
                 TrailRendererLeft.emitting = true;
                 TrailRendererRight.emitting = true;  
             }
@@ -122,6 +125,16 @@ public class Moving : MonoBehaviour
             TrailRendererRight.emitting = false;
         }
     }
+
+       
+    public void HandBrakeSlider()// ручник через слайдер
+    {
+            moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, Slider.value* Time.deltaTime) * moveForce.magnitude;
+           
+    }
+
+
+
     IEnumerator TimeToStart()
     {// задержка, чтобы машина не ехала перед отчетом времени
         maxSpeed = 0;
@@ -151,7 +164,8 @@ public class Moving : MonoBehaviour
     {
         Move();
         Turn();
-        HandBrake();
+        //HandBrake();
+        HandBrakeSlider();
     }
 
     private void Update()
@@ -160,6 +174,7 @@ public class Moving : MonoBehaviour
         //Text.text = (moveForce.magnitude * 60).ToString("f0");
         Debug.DrawRay(transform.position, moveForce.normalized * 50, Color.red);
         Debug.DrawRay(transform.position, transform.forward * 100, Color.black);
+        print(Slider.value);
     }
 
 }
