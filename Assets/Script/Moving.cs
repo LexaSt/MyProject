@@ -33,8 +33,8 @@ public class Moving : MonoBehaviour
     public SoundDrift SoundDrift;
 
     public Slider Slider;
-    public Slider SliderTurnLeft; // этот слайдер предназначен для версии управления Ручник и Поворо на одном слайдере  TurnAndHandBrakeOnSlider()
-    public Slider SliderTurnRight;// этот слайдер предназначен для версии управления Ручник и Поворо на одном слайдере  TurnAndHandBrakeOnSlider()
+    public Slider SliderTurnLeft; // этот слайдер предназначен для версии управления Ручник и Поворот на одном слайдере  TurnAndHandBrakeOnSlider()
+    public Slider SliderTurnRight;// этот слайдер предназначен для версии управления Ручник и Поворот на одном слайдере  TurnAndHandBrakeOnSlider()
 
 
     public void Move()
@@ -89,7 +89,7 @@ public class Moving : MonoBehaviour
 
     }
 
-    public void HandBrake()//ручник через кнопки
+    public void HandBrake()//версия управления #1 ручником через кнопки
     {
         //drift
         if (Input.GetKey(KeyCode.Space) || buttonHandBrake.isDown)
@@ -127,23 +127,22 @@ public class Moving : MonoBehaviour
             TrailRendererRight.emitting = false;
         }
     }
-
-       
-    public void HandBrakeSlider()// ручник через слайдер
+  
+    public void HandBrakeSlider()//вермсия управления #2 ручником через слайдер
     {
             moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, Slider.value* Time.deltaTime) * moveForce.magnitude;
            
     }
 
-    public void TurnAndHandBrakeOnSlider()
+    public void TurnAndHandBrakeOnSlider()//версия управления #3 ручником и поворотом одновременно через слайдер
     {
 
-        if (SliderTurnRight.value>46)
+        if (SliderTurnRight.value> SliderTurnRight.minValue)
         {
             Player.transform.Rotate(Vector3.up * Time.deltaTime * moveForce.magnitude * speedRotate);
             moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, SliderTurnRight.value * Time.deltaTime) * moveForce.magnitude;
         }
-        else if (SliderTurnLeft.value>46)
+        else if (SliderTurnLeft.value> SliderTurnLeft.minValue)
         {
             Player.transform.Rotate(-Vector3.up * Time.deltaTime * moveForce.magnitude * speedRotate);
             moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, SliderTurnLeft.value * Time.deltaTime) * moveForce.magnitude;
@@ -152,10 +151,23 @@ public class Moving : MonoBehaviour
         { 
             moveForce = Vector3.Lerp(transform.forward, moveForce.normalized, 46 * Time.deltaTime) * moveForce.magnitude; 
         }
-
     }
-   
 
+    private void BackSliderToMin()
+    {
+        if (buttonLeft.isDown||buttonRight.isDown||buttonBrake.isDown)
+        {
+            SliderTurnRight.value = SliderTurnRight.minValue;
+            SliderTurnLeft.value = SliderTurnLeft.minValue;
+        }
+        if (SliderTurnRight.value>SliderTurnRight.minValue && SliderTurnLeft.value > SliderTurnLeft.minValue)
+        {
+            SliderTurnLeft.value = SliderTurnLeft.minValue;
+            SliderTurnRight.value = SliderTurnRight.minValue;
+        }
+       
+    }// для управления версии #3, возвращает слайдеры в минимальное положение
+   
     IEnumerator TimeToStart()
     {
         maxSpeed = 0;
@@ -164,7 +176,6 @@ public class Moving : MonoBehaviour
         maxSpeed = 1.8f;
         accelerate = 0.5f;
     } // задержка, чтобы машина не ехала перед отчетом времени
-
 
     public void PlaySoundDrift()
     {
@@ -180,12 +191,12 @@ public class Moving : MonoBehaviour
         StartCoroutine(TimeToStart());
     }
 
-
     private void FixedUpdate()
     {
         Move();
         Turn();
         TurnAndHandBrakeOnSlider();
+        BackSliderToMin();
         //HandBrake(); //активируем для управления ручником через кнопки, также нужно будет активировать в HingleJoint
         // HandBrakeSlider(); //активируем для управления ручником через слайдер, также нужно будет активировать в HingleJoint
     }
@@ -196,7 +207,7 @@ public class Moving : MonoBehaviour
         //Text.text = (moveForce.magnitude * 60).ToString("f0");
         Debug.DrawRay(transform.position, moveForce.normalized * 50, Color.red);
         Debug.DrawRay(transform.position, transform.forward * 100, Color.black);
-        print(Slider.value);
+        //print(Slider.value);
     }
 
 }

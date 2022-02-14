@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HingleJoint : MonoBehaviour
 {
+    //
     public HingeJoint HingeJoint;
     public UIbutton buttonLeft;
     public UIbutton buttonRight;
@@ -74,7 +75,7 @@ public class HingleJoint : MonoBehaviour
 
     private void MovingWithSlider()
     {
-        if (((Input.GetKey(KeyCode.A) || buttonLeft.isDown) && Moving.Slider.value > 46)|| Moving.SliderTurnLeft.value > 46) //удержание груза справа при повороте наналево для слайдера
+        if (((Input.GetKey(KeyCode.A) || buttonLeft.isDown) && Moving.Slider.value > 46)|| Moving.SliderTurnLeft.value > Moving.SliderTurnLeft.minValue) //удержание груза справа при повороте наналево для слайдера
         {
             JointSpring jointSpring = HingeJoint.spring;
             jointSpring.targetPosition += 10f;
@@ -88,7 +89,7 @@ public class HingleJoint : MonoBehaviour
             }
 
         }
-        else if (((Input.GetKey(KeyCode.D) || buttonRight.isDown) && Moving.Slider.value > 46) || Moving.SliderTurnRight.value > 46) //удержание груза слева при повороте направо для слайдера
+        else if (((Input.GetKey(KeyCode.D) || buttonRight.isDown) && Moving.Slider.value > 46) || Moving.SliderTurnRight.value > Moving.SliderTurnRight.minValue) //удержание груза слева при повороте направо для слайдера
         {
             JointSpring jointSpring = HingeJoint.spring;
             jointSpring.targetPosition -= 10f;
