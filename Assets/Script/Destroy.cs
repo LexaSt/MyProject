@@ -9,7 +9,7 @@ public class Destroy : MonoBehaviour
     public Rigidbody block;
     public Rigidbody redCube;
     public RedCube forSound;
-    public Moving moving;
+    
     
     
     void OnCollisionEnter(Collision collision)

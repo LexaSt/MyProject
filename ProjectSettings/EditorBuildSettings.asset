@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EveningRoad.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/MainMenu opt.unity
+    guid: adcfcacaaf852544191d4a5dbe64b615
+  - enabled: 1
+    path: Assets/Scenes/Training.unity
+    guid: a00c2ee4d070bd942b850f9348608190
   m_configObjects: {}

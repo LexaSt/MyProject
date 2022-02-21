@@ -12,21 +12,19 @@ public class CanvasSystem : MonoBehaviour
     public GameObject text2;
     public GameObject text3;
     public GameObject text4;
-    //public Moving moving;
-  
-
+    //public MoveAndTurn MoveAndTurn;
+    //public ControlOption ControlOption;
+    //public UIbutton choiceButtonControl;
+    //public UIbutton choiceSliderControl;
 
     public void ActiveCanvasStart()
     {
-        StartCoroutine(TimeToStart());
+            StartCoroutine(TimeToStart());
     }
-
-   
-
 
     IEnumerator TimeToStart()
     {
-       
+        text3.SetActive(!text3.activeSelf);
         yield return new WaitForSeconds(1f);
         text2.SetActive(!text2.activeSelf);
         yield return new WaitForSeconds(1f);
@@ -40,7 +38,6 @@ public class CanvasSystem : MonoBehaviour
         Destroy(text4);
         CanvasStart.SetActive(!CanvasStart.activeSelf);
         CanvasInGame.SetActive(!CanvasInGame.activeSelf);
-
 
     }
 }

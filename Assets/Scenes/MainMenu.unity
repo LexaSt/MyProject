@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Garage (yet not work)
+  m_Text: Training ground
 --- !u!222 &188591885
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -510,6 +510,7 @@ GameObject:
   - component: {fileID: 800425938}
   - component: {fileID: 800425937}
   - component: {fileID: 800425936}
+  - component: {fileID: 800425939}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -580,7 +581,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 800425937}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 800425939}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: ReloadLevelOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &800425937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,6 +632,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800425934}
   m_CullTransparentMesh: 1
+--- !u!114 &800425939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800425934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0615f82490fb5334d86415eb5c96a927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &862130267
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +656,7 @@ GameObject:
   - component: {fileID: 862130271}
   - component: {fileID: 862130270}
   - component: {fileID: 862130269}
+  - component: {fileID: 862130272}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -701,7 +727,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 862130270}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 862130272}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: ReloadTraining
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &862130270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,6 +778,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862130267}
   m_CullTransparentMesh: 1
+--- !u!114 &862130272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862130267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0615f82490fb5334d86415eb5c96a927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &906883484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,7 +1566,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option (yet not work)
+  m_Text: Option
 --- !u!222 &2110103715
 CanvasRenderer:
   m_ObjectHideFlags: 0
