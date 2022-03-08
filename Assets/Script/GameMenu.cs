@@ -14,6 +14,8 @@ public class GameMenu : MonoBehaviour
     public GameObject CanvasGameOver;
     public CanvasSystem CanvasSystem;
     public ScoreAndTime ScoreAndTime;
+    public TestChoiseControl TestChoiseControl;
+    public ControlOption ControlOption;
     
 
     public State CurrentState { get; private set; }
@@ -23,6 +25,21 @@ public class GameMenu : MonoBehaviour
         Won,
     }
 
+
+    private void Start()
+    {
+
+        if (TestChoiseControl.A==1)
+        {
+            print("Test from option " + TestChoiseControl.A);
+            ControlOption.ChoiceButtonControl();
+        }
+        else
+        {
+            print("Test from option " + TestChoiseControl.A);
+            ControlOption.ChoiceSliderControl();
+        }
+    }
 
     public void OnPlayerRaechFinish()
     {
@@ -36,7 +53,8 @@ public class GameMenu : MonoBehaviour
         timeOnFinish.text = "Your win Time: " + _stringMinutes + ":" + _stringSeconds;
         scoreOnFinish.text = "Your win Score: " + ScoreAndTime.score.ToString();
         CanvasGameOver.SetActive(!CanvasGameOver.activeSelf);
-        CanvasSystem.CanvasInGame.SetActive(!CanvasSystem.CanvasInGame.activeSelf);      
+        CanvasSystem.CanvasInGame.SetActive(!CanvasSystem.CanvasInGame.activeSelf);
+        CanvasSystem.controlCanvas.SetActive(!CanvasSystem.controlCanvas.activeSelf);
     }
 
     

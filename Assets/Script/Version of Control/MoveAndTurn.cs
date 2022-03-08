@@ -21,10 +21,10 @@ public class MoveAndTurn : MonoBehaviour
     public UIbutton buttonBrake;
     public UIbutton buttonLeft;
     public UIbutton buttonRight;
-    public UIbutton choiceButtonControl;
-    public UIbutton choiceSliderControl;
+    //public UIbutton choiceButtonControl;
+   // public UIbutton choiceSliderControl;
     public Text SpeedRotateInfo;
-
+    public Text MaxSpeedInfo;
 
     public void Move()
     {
@@ -108,7 +108,10 @@ public class MoveAndTurn : MonoBehaviour
     private void Update()
     {
         SpeedRotateInfo.text = "SpeedRotateInfo: " + speedRotate.ToString();
+        MaxSpeedInfo.text = "MaxSpeedInfo: " + maxSpeed.ToString();
         Debug.DrawRay(transform.position, moveForce.normalized * 50, Color.red);
-        Debug.DrawRay(transform.position, transform.forward * 100, Color.black);   
+        Debug.DrawRay(transform.position, transform.forward * 100, Color.black);
+        maxSpeed = PlayerPrefs.GetFloat("maxSpeed");
+        speedRotate = PlayerPrefs.GetFloat("turn");
     }
 }

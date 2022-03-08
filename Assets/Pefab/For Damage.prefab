@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreAndTime: {fileID: 0}
   block: {fileID: 1448863774586525848}
-  redCube: {fileID: 0}
+  redCube: {fileID: 1448863774586525848}
   forSound: {fileID: 0}
 --- !u!65 &6549356447538280203
 BoxCollider:

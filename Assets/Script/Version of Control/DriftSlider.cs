@@ -17,15 +17,21 @@ public class DriftSlider : MonoBehaviour
         {
             Slider.value = Slider.minValue;
         }
-        if (MoveAndTurn.moveForce.magnitude > 0.6f)
+        if (Slider.value > 48)
         {
             TrailRendererLeft.emitting = true;
             TrailRendererRight.emitting = true;
         }
+        if (Slider.value <= 48)
+        {
+            TrailRendererLeft.emitting = false;
+            TrailRendererRight.emitting = false;
+        }
+
     }
     private void MovingWithSlider()
     {
-        if (((Input.GetKey(KeyCode.A) || MoveAndTurn.buttonLeft.isDown) && Slider.value > 46)) //удержание груза справа при повороте наналево для слайдера
+        if (((Input.GetKey(KeyCode.A) || MoveAndTurn.buttonLeft.isDown) && Slider.value > 48)) //удержание груза справа при повороте наналево для слайдера
         {
             JointSpring jointSpring = HingeJoint.spring;
             jointSpring.targetPosition += 10f;
@@ -39,7 +45,7 @@ public class DriftSlider : MonoBehaviour
             }
 
         }
-        else if (((Input.GetKey(KeyCode.D) || MoveAndTurn.buttonRight.isDown) && Slider.value > 46)) //удержание груза слева при повороте направо для слайдера
+        else if (((Input.GetKey(KeyCode.D) || MoveAndTurn.buttonRight.isDown) && Slider.value > 48)) //удержание груза слева при повороте направо для слайдера
         {
             JointSpring jointSpring = HingeJoint.spring;
             jointSpring.targetPosition -= 10f;

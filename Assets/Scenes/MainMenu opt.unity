@@ -759,8 +759,9 @@ GameObject:
   - component: {fileID: 862130270}
   - component: {fileID: 862130269}
   - component: {fileID: 862130272}
+  - component: {fileID: 862130273}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ChoiseSliderControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -830,9 +831,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 862130272}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: ReloadLevel
+      - m_Target: {fileID: 862130273}
+        m_TargetAssemblyTypeName: TestChoiseControl, Assembly-CSharp
+        m_MethodName: SliderControl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -892,6 +893,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0615f82490fb5334d86415eb5c96a927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &862130273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862130267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846cfb55e6e27274bbb7cb9baf5232ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: 1
 --- !u!1 &906883484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,8 +1317,9 @@ GameObject:
   - component: {fileID: 1542140000}
   - component: {fileID: 1542139999}
   - component: {fileID: 1542140002}
+  - component: {fileID: 1542140003}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ChoiseButtonControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1374,9 +1389,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1542140002}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: ReloadLevel
+      - m_Target: {fileID: 1542140003}
+        m_TargetAssemblyTypeName: TestChoiseControl, Assembly-CSharp
+        m_MethodName: ButtonControl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1436,6 +1451,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0615f82490fb5334d86415eb5c96a927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1542140003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542139997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846cfb55e6e27274bbb7cb9baf5232ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A: 1
 --- !u!1 &1627102794
 GameObject:
   m_ObjectHideFlags: 0

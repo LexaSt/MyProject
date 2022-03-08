@@ -7,11 +7,17 @@ public class CanvasSystem : MonoBehaviour
 {
     public GameObject CanvasStart;
     public GameObject CanvasInGame;
+    public GameObject controlCanvas;
    // public GameObject CanvasGameOver;
     public GameObject text1;
     public GameObject text2;
     public GameObject text3;
     public GameObject text4;
+   // public GameObject score;
+    //public GameObject time;
+    //public GameObject backToMenu;
+    //public GameObject rest;
+
     //public MoveAndTurn MoveAndTurn;
     //public ControlOption ControlOption;
     //public UIbutton choiceButtonControl;
@@ -38,6 +44,12 @@ public class CanvasSystem : MonoBehaviour
         Destroy(text4);
         CanvasStart.SetActive(!CanvasStart.activeSelf);
         CanvasInGame.SetActive(!CanvasInGame.activeSelf);
+        controlCanvas.SetActive(!controlCanvas.activeSelf);
+        //score.SetActive(!score.activeSelf);
+        //time.SetActive(!time.activeSelf);
+        //rest.SetActive(!rest.activeSelf);
+        //backToMenu.SetActive(!backToMenu.activeSelf);
+
 
     }
 }

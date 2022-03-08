@@ -18,28 +18,26 @@ public class ControlOption : MonoBehaviour
     private void Awake()
     {
         Player = GameObject.Find("RTI_Midnight");
-        DriftButton=Player.GetComponent<DriftButton>();
-        DriftSlider = Player.GetComponent<DriftSlider>();
-      
+        DriftButton = Player.GetComponent<DriftButton>();
+        DriftSlider = Player.GetComponent<DriftSlider>();     
     }
-  
 
-    public void ReloadLevel()
-    {
-        SceneManager.LoadScene(0);
-    }
+   
     public void ChoiceButtonControl()
     {
         DriftButton.enabled = true;
         DriftSlider.enabled = false;
-        UiHandBrake.SetActive(!UiHandBrake.activeSelf);
-        UiHandBrakeLow .SetActive(!UiHandBrakeLow.activeSelf);
+        UiHandBrake.SetActive(true);
+        UiHandBrakeLow.SetActive(true);
+        UiSlider.SetActive(false);
     }
     public void ChoiceSliderControl()
     {
         DriftButton.enabled = false;
         DriftSlider.enabled = true;
-        UiSlider.SetActive(!UiSlider.activeSelf);
+        UiHandBrake.SetActive(false);
+        UiHandBrakeLow.SetActive(false);
+        UiSlider.SetActive(true);
     }
 }
 

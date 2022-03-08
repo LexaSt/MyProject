@@ -257,6 +257,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RTI_Gray
       objectReference: {fileID: 0}
+    - target: {fileID: 3702657552785132895, guid: 4451c7d9583da4941901eaa5cfaee8ef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4451c7d9583da4941901eaa5cfaee8ef, type: 3}
 --- !u!1 &551718990
@@ -495,6 +499,10 @@ PrefabInstance:
     - target: {fileID: 9193637965935959287, guid: 9d71ac273b96d3a4dad4d3d045e12374, type: 3}
       propertyPath: m_Name
       value: RTI_Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193637965935959287, guid: 9d71ac273b96d3a4dad4d3d045e12374, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d71ac273b96d3a4dad4d3d045e12374, type: 3}
@@ -1006,6 +1014,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RTI_Orange
       objectReference: {fileID: 0}
+    - target: {fileID: 8857304170252238051, guid: 103c636634d3cbb48b7ab43e78bc13b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103c636634d3cbb48b7ab43e78bc13b2, type: 3}
 --- !u!1 &1210960111
@@ -1419,6 +1431,10 @@ PrefabInstance:
     - target: {fileID: 5033163907909335948, guid: afa91be8fdec119408c72da86109e6d8, type: 3}
       propertyPath: m_Name
       value: RTI_Midnight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033163907909335948, guid: afa91be8fdec119408c72da86109e6d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8323279041932446111, guid: afa91be8fdec119408c72da86109e6d8, type: 3}
       propertyPath: m_RootOrder

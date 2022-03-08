@@ -64,6 +64,7 @@ public class DriftButton : MonoBehaviour
             if (jointSpring.targetPosition >= 45f)
             {
                 jointSpring.targetPosition = 45f;
+                HingeJoint.spring = jointSpring;
             }
             else
             {
@@ -78,6 +79,7 @@ public class DriftButton : MonoBehaviour
             if (jointSpring.targetPosition <= -45f)
             {
                 jointSpring.targetPosition = -45f;
+                HingeJoint.spring = jointSpring;
             }
             else
             {
