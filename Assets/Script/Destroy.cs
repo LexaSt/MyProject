@@ -14,8 +14,9 @@ public class Destroy : MonoBehaviour
     
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.TryGetComponent(out redCube))
+        if (collision.gameObject.tag == "RedCube")
         {
+            
             forSound.AudioBreak();
             ScoreAndTime.GetScore();
             StartCoroutine(DestroyCorotune());  
@@ -31,8 +32,7 @@ public class Destroy : MonoBehaviour
 
     IEnumerator DestroyCorotune()
     {
-        
-        block.AddForce(222,222,222, ForceMode.Impulse);
+        block.AddForce(Vector3.up*200, ForceMode.Impulse);
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }

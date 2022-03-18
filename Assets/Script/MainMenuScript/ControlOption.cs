@@ -17,7 +17,7 @@ public class ControlOption : MonoBehaviour
 
     private void Awake()
     {
-        Player = GameObject.Find("RTI_Midnight");
+        Player = GameObject.FindGameObjectWithTag("Player");
         DriftButton = Player.GetComponent<DriftButton>();
         DriftSlider = Player.GetComponent<DriftSlider>();     
     }

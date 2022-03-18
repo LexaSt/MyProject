@@ -9,7 +9,6 @@ public class GameMenu : MonoBehaviour
     
     public Text scoreOnFinish;
     public Text timeOnFinish;
-    //public Moving moving;//в дальнейшем заменить на MOveAndTurn
     public MoveAndTurn MoveAndTurn;
     public GameObject CanvasGameOver;
     public CanvasSystem CanvasSystem;
@@ -31,12 +30,12 @@ public class GameMenu : MonoBehaviour
 
         if (TestChoiseControl.A==1)
         {
-            print("Test from option " + TestChoiseControl.A);
+            //print("Test from option " + TestChoiseControl.A);
             ControlOption.ChoiceButtonControl();
         }
         else
         {
-            print("Test from option " + TestChoiseControl.A);
+           // print("Test from option " + TestChoiseControl.A);
             ControlOption.ChoiceSliderControl();
         }
     }
@@ -46,8 +45,9 @@ public class GameMenu : MonoBehaviour
         if (CurrentState != State.Playing) return;
 
         CurrentState = State.Won;
-        //moving.maxSpeed = 0;//в дальнейшем заменить на MOveAndTurn
-       // MoveAndTurn.maxSpeed = 0;
+        MoveAndTurn.maxSpeed = 0;
+        PlayerPrefs.SetFloat("maxSpeed", MoveAndTurn.maxSpeed);
+        PlayerPrefs.Save();
         string _stringSeconds = ScoreAndTime.GameSeconds.ToString("f0");
         string _stringMinutes = ScoreAndTime.GameMinutes.ToString("f0");
         timeOnFinish.text = "Your win Time: " + _stringMinutes + ":" + _stringSeconds;

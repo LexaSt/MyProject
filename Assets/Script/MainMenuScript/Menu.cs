@@ -24,5 +24,10 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+
+    public void ReloadSynthy()
+    {
+        SceneManager.LoadScene(4);
+    }
 }
 

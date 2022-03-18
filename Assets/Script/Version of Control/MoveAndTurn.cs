@@ -25,6 +25,7 @@ public class MoveAndTurn : MonoBehaviour
    // public UIbutton choiceSliderControl;
     public Text SpeedRotateInfo;
     public Text MaxSpeedInfo;
+    public Vector3 startPosition;
 
     public void Move()
     {
@@ -96,7 +97,7 @@ public class MoveAndTurn : MonoBehaviour
         accelerate = 0;
             CanvasSystem.ActiveCanvasStart();
             StartCoroutine(TimeToStart());
-        
+        startPosition = transform.position;
     }
 
     private void FixedUpdate()

@@ -34,6 +34,7 @@ public class ChangeRtateInGame : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    
     private void Update()
     {
        // MoveAndTurn.maxSpeed= PlayerPrefs.GetFloat("maxSpeed");

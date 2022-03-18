@@ -5548,7 +5548,7 @@ GameObject:
   - component: {fileID: 981404759}
   m_Layer: 0
   m_Name: REd Cube
-  m_TagString: Untagged
+  m_TagString: RedCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5657,6 +5657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2099969d6a6082142a1a94ed7351534a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPositionRedCube: {x: 0, y: 0, z: 0}
 --- !u!82 &981404760
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9583,10 +9584,9 @@ MonoBehaviour:
   buttonBrake: {fileID: 1056313778}
   buttonLeft: {fileID: 1863718280}
   buttonRight: {fileID: 86489771}
-  choiceButtonControl: {fileID: 394279754}
-  choiceSliderControl: {fileID: 483904308}
   SpeedRotateInfo: {fileID: 1213067500}
   MaxSpeedInfo: {fileID: 1034118008}
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1581026533
 MonoBehaviour:
   m_ObjectHideFlags: 0
