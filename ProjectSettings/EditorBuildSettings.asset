@@ -5,19 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: a716a6744019f804290a1df9ca6975cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EveningRoad.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu opt.unity
     guid: adcfcacaaf852544191d4a5dbe64b615
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Training.unity
     guid: a00c2ee4d070bd942b850f9348608190
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Synthy.unity
     guid: 248863ba96a6d42408302af05ddf4384
+  - enabled: 1
+    path: Assets/Scenes/LegoRoad.unity
+    guid: 6446b7f96e493b246889b37fe2e82ba2
   m_configObjects: {}

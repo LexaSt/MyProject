@@ -27,13 +27,19 @@ public class MoveAndTurn : MonoBehaviour
     public Text MaxSpeedInfo;
     public Vector3 startPosition;
 
+    private Rigidbody Rigidbody;
+
+    
+
     public void Move()
     {
         if (Input.GetKey(KeyCode.S) || buttonBrake.isDown) //торможение кнопокой
         {
-            moveForce += -transform.forward * Time.deltaTime * brakePower;
-            Player.transform.position += moveForce * moveSpeed * Time.deltaTime;
+            moveForce += -transform.forward * Time.fixedDeltaTime * brakePower;
+           // Player.transform.position += moveForce * moveSpeed * Time.fixedDeltaTime;
+            Rigidbody.MovePosition(Player.transform.position + moveForce * moveSpeed * Time.fixedDeltaTime);
             moveForce = Vector3.ClampMagnitude(moveForce, maxSpeed);
+            
         }
         else if (Input.GetKey(KeyCode.LeftAlt))
         {
@@ -42,8 +48,10 @@ public class MoveAndTurn : MonoBehaviour
 
         else// автоматическое ускорение
         {
-            moveForce += transform.forward * Time.deltaTime * accelerate;
-            Player.transform.position += moveForce * moveSpeed * Time.deltaTime;
+            moveForce += transform.forward * Time.fixedDeltaTime * accelerate;
+           // Player.transform.position += moveForce * moveSpeed * Time.fixedDeltaTime;
+            Rigidbody.MovePosition(Player.transform.position + moveForce * moveSpeed * Time.fixedDeltaTime);
+            //Rigidbody.AddForce(Input.GetAxis("Vertical")* moveForce * moveSpeed * Time.fixedDeltaTime);
             moveForce = Vector3.ClampMagnitude(moveForce, maxSpeed);
         }
     }
@@ -98,6 +106,8 @@ public class MoveAndTurn : MonoBehaviour
             CanvasSystem.ActiveCanvasStart();
             StartCoroutine(TimeToStart());
         startPosition = transform.position;
+
+        Rigidbody = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
