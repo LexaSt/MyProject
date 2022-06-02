@@ -8,6 +8,7 @@ TagManager:
   - Road
   - Bullet
   - TargerForTower
+  - Sun
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Road
-  - 
+  - Sun
   - 
   - 
   - 

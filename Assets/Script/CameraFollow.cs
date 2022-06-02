@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
     }
     private void Update()
     {
-        this.transform.position = target.TransformPoint(camOffSet);
+        //this.transform.position = target.TransformPoint(camOffSet);
         this.transform.LookAt(target);
      
         

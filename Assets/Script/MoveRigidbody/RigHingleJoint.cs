@@ -12,13 +12,13 @@ public class RigHingleJoint : MonoBehaviour
     // Доработка физики
     private void MovingWithButton()
     {
-        if (Input.GetKey(KeyCode.A) & (Input.GetKey(KeyCode.Space))) //удержание груза справа при повороте наналево для кнопок
+        if (Input.GetKey(KeyCode.D) && (Input.GetKey(KeyCode.Space))) //удержание груза справа при повороте наналево для кнопок
         {
             JointSpring jointSpring = HingeJoint.spring;
-            jointSpring.targetPosition += 10f;
-            if (jointSpring.targetPosition >= 45f)
+            jointSpring.targetPosition += 1f;
+            if (jointSpring.targetPosition >= 80f)
             {
-                jointSpring.targetPosition = 45f;
+                jointSpring.targetPosition = 80f;
             }
             else
             {
@@ -26,13 +26,13 @@ public class RigHingleJoint : MonoBehaviour
             }
 
         }
-        else if (Input.GetKey(KeyCode.D) & (Input.GetKey(KeyCode.Space))) //удержание груза слева при повороте направо для кнопок
+        else if (Input.GetKey(KeyCode.A) && (Input.GetKey(KeyCode.Space))) //удержание груза слева при повороте направо для кнопок
         {
             JointSpring jointSpring = HingeJoint.spring;
-            jointSpring.targetPosition -= 10f;
-            if (jointSpring.targetPosition <= -45f)
+            jointSpring.targetPosition -= 1f;
+            if (jointSpring.targetPosition <= -80f)
             {
-                jointSpring.targetPosition = -45f;
+                jointSpring.targetPosition = -80f;
             }
             else
             {
@@ -44,7 +44,7 @@ public class RigHingleJoint : MonoBehaviour
             JointSpring jointSpring = HingeJoint.spring;
             if (jointSpring.targetPosition > 0)
             {
-                jointSpring.targetPosition -= 0.5f;
+                jointSpring.targetPosition -= 20f* Time.deltaTime;
                 if (jointSpring.targetPosition == 0)
                 {
                     jointSpring.targetPosition = 0;
@@ -56,7 +56,7 @@ public class RigHingleJoint : MonoBehaviour
             }
             if (jointSpring.targetPosition < 0)
             {
-                jointSpring.targetPosition += 0.5f;
+                jointSpring.targetPosition += 20f* Time.fixedDeltaTime;
                 if (jointSpring.targetPosition == 0)
                 {
                     jointSpring.targetPosition = 0;
@@ -73,6 +73,6 @@ public class RigHingleJoint : MonoBehaviour
     void FixedUpdate()
     {
         MovingWithButton(); // управление ручником через кнопки, включаем если в MOVING активен метод HandBrake()
-        //MovingWithSlider(); // управление ручником через слайдер, включаем если в MOVING активен метод HandBrakeSlider()
+       
     }      
 }

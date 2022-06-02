@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Synthy.unity
     guid: 248863ba96a6d42408302af05ddf4384
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LegoRoad.unity
     guid: 6446b7f96e493b246889b37fe2e82ba2
   m_configObjects: {}
