@@ -21269,7 +21269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 873757160672595353, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -137
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 873757160672595353, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21277,7 +21277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 873757160672595353, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 674
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 873757160672595353, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21307,13 +21307,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1595508728165368941, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595508728165368941, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4214081014203350922, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4811673063295947863, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811673063295947863, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8267638779977710753, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
       propertyPath: changeTurnSpeed
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8267638779977710778, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 4.799999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
@@ -21429,7 +21449,6 @@ MonoBehaviour:
   - {fileID: 0}
   speed: 2000
   changeTurnSpeed: 0
-  forceDrift: 0.97
   brakeForce: 2000
   speedLimit: 10
 --- !u!1 &8836880657683867136

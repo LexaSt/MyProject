@@ -12,7 +12,7 @@ public class RigMoveTurnWheelCol : MonoBehaviour
     [SerializeField] float speed;
     private float turnSpeed;
     [SerializeField] float changeTurnSpeed;
-    [SerializeField] float forceDrift;
+    private float forceDrift = 0.97f;
     [SerializeField] float brakeForce;
 
     [SerializeField] float speedLimit;
@@ -120,7 +120,7 @@ public class RigMoveTurnWheelCol : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            
+            forceDrift = 0.97f;
             WheelFrictionCurve rearWheel = rearWheelCollider[0].sidewaysFriction;
             rearWheel.stiffness = forceDrift;
             rearWheelCollider[0].sidewaysFriction = rearWheel;
@@ -132,28 +132,30 @@ public class RigMoveTurnWheelCol : MonoBehaviour
             rearWheelCollider[1].forwardFriction = rearWheelForwardFriction;
 
 
-            WheelFrictionCurve frontWheel = frontWheelCollider[0].forwardFriction;
+           /* WheelFrictionCurve frontWheel = frontWheelCollider[0].forwardFriction;
             frontWheel.stiffness = 3f;
             frontWheelCollider[0].forwardFriction = frontWheel;
-            frontWheelCollider[1].forwardFriction = frontWheel;
+            frontWheelCollider[1].forwardFriction = frontWheel;*/
 
         }
         else
         {
             WheelFrictionCurve rearWheel = rearWheelCollider[0].sidewaysFriction;
-            rearWheel.stiffness = 2.5f;
+            //нкжно, чтобы плавно от Force drift(0.98) поднимаось до 2,5f (чем больше цифра тем больше держак)
+            forceDrift = Mathf.Lerp(forceDrift, 2.5f, 1f * Time.deltaTime);
+            rearWheel.stiffness = forceDrift;
             rearWheelCollider[0].sidewaysFriction = rearWheel;
             rearWheelCollider[1].sidewaysFriction = rearWheel;
 
             WheelFrictionCurve rearWheelForwardFriction = rearWheelCollider[0].forwardFriction;
-            rearWheelForwardFriction.stiffness = 1f;
+            rearWheelForwardFriction.stiffness = forceDrift;
             rearWheelCollider[0].forwardFriction = rearWheelForwardFriction;
             rearWheelCollider[1].forwardFriction = rearWheelForwardFriction;
 
-            WheelFrictionCurve frontWheel = frontWheelCollider[0].forwardFriction;
-            frontWheel.stiffness = 3f;
+           /* WheelFrictionCurve frontWheel = frontWheelCollider[0].forwardFriction;
+            frontWheel.stiffness = forceDrift;
             frontWheelCollider[0].forwardFriction = frontWheel;
-            frontWheelCollider[1].forwardFriction = frontWheel;
+            frontWheelCollider[1].forwardFriction = frontWheel;*/
 
         }
 

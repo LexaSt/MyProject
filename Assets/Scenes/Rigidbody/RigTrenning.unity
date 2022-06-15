@@ -279,9 +279,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1595508728165368941, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4214081014203350922, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811673063295947863, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743234704568294236, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754549218470968542, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8267638779977710753, guid: b6e2db55acf64cf4f95683a47977c84c, type: 3}
       propertyPath: speed
