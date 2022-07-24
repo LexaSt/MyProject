@@ -5,10 +5,6 @@ using UnityEngine;
 public class cameraController : MonoBehaviour
 {
 
-    
-
-    
-
     private GameObject cameraLookAtObject;
     
     [Range(0,20)]public float smothTime = 5;

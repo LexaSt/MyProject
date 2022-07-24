@@ -25,8 +25,9 @@ public class RigMoveTurnWheelCol : MonoBehaviour
     private Quaternion rotation;
     private bool check = true;
     private bool check2 = true;
+    [SerializeField] int Delta;
 
-    private int timerButton = 0;
+    //private int timerButton = 0;
     
 
 
@@ -41,7 +42,7 @@ public class RigMoveTurnWheelCol : MonoBehaviour
         if (check)
         {
             currentAngle = transform.position;
-            //Debug.Log("currentAngle" + currentAngle);
+            //Debug.Log("currentAngle Check" + currentAngle);
         }
 
         if (Input.GetKey(KeyCode.Space))
@@ -54,11 +55,12 @@ public class RigMoveTurnWheelCol : MonoBehaviour
             {
                 needAngle = transform.position;
                 rotation = transform.rotation;
+               // Debug.Log("Rotation " + rotation);
             }
-            if (delta.magnitude > 22)
+            if (delta.magnitude > Delta)
             {
-                // Debug.Log("needAngle " + needAngle);
-                Debug.Log("Раница " + Mathf.CeilToInt(delta.magnitude));
+                Debug.Log("needAngle " + needAngle);
+                Debug.Log("Разница " + Mathf.CeilToInt(delta.magnitude));
                 //Debug.Log("!!!!!!!!!!!!!!!!!!");
                 //.Log("needAngle from if " + needAngle);
                 transform.rotation = rotation;
@@ -132,10 +134,10 @@ public class RigMoveTurnWheelCol : MonoBehaviour
             rearWheelCollider[1].forwardFriction = rearWheelForwardFriction;
 
 
-           /* WheelFrictionCurve frontWheel = frontWheelCollider[0].forwardFriction;
+           WheelFrictionCurve frontWheel = frontWheelCollider[0].forwardFriction;
             frontWheel.stiffness = 3f;
             frontWheelCollider[0].forwardFriction = frontWheel;
-            frontWheelCollider[1].forwardFriction = frontWheel;*/
+            frontWheelCollider[1].forwardFriction = frontWheel;
 
         }
         else
@@ -152,29 +154,30 @@ public class RigMoveTurnWheelCol : MonoBehaviour
             rearWheelCollider[0].forwardFriction = rearWheelForwardFriction;
             rearWheelCollider[1].forwardFriction = rearWheelForwardFriction;
 
-           /* WheelFrictionCurve frontWheel = frontWheelCollider[0].forwardFriction;
-            frontWheel.stiffness = forceDrift;
+            WheelFrictionCurve frontWheel = frontWheelCollider[0].forwardFriction;
+            frontWheel.stiffness = 4f;
             frontWheelCollider[0].forwardFriction = frontWheel;
-            frontWheelCollider[1].forwardFriction = frontWheel;*/
+            frontWheelCollider[1].forwardFriction = frontWheel;
 
         }
 
-        if (player.velocity.magnitude <= 8 && player.velocity.magnitude >= -8) // скоростьо поворота на маленькой скорости
+        if (player.velocity.magnitude <= 8 && player.velocity.magnitude >= -8) // скоростьо поворота на минимальной скорости
         {
-            turnSpeed = 300f;
+            turnSpeed = 600f;
         }
         else if (Input.GetKey(KeyCode.Space))// скроость поворота в дрифте
         {
-            turnSpeed = 350f;
+            turnSpeed = 750f;
         }
-        else// скорость поворота на максимальной скорости
+        else// скорость поворота на макс скорости
         {
             turnSpeed = changeTurnSpeed;
         }
     }
     private void FixedUpdate()
     {
-        MoveTurn();    
+        MoveTurn();
+        //Angle();
     }
     private void Update()
     {
@@ -183,7 +186,7 @@ public class RigMoveTurnWheelCol : MonoBehaviour
         Mathf.Clamp(player.velocity.y, -speedLimit, speedLimit),
         Mathf.Clamp(player.velocity.z, -speedLimit, speedLimit));
         TurnGraphicsUpdate();
-        //Angle();
+        Debug.Log(turnSpeed);  
         //Debug.Log("Заднее колесо" + rearWheelCollider[0].sidewaysFriction);
 
     }
