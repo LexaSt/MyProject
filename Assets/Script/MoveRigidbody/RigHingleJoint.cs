@@ -44,7 +44,7 @@ public class RigHingleJoint : MonoBehaviour
             JointSpring jointSpring = HingeJoint.spring;
             if (jointSpring.targetPosition > 0)
             {
-                jointSpring.targetPosition -= 20f* Time.deltaTime;
+                jointSpring.targetPosition -= 20f;
                 if (jointSpring.targetPosition == 0)
                 {
                     jointSpring.targetPosition = 0;
@@ -56,7 +56,7 @@ public class RigHingleJoint : MonoBehaviour
             }
             if (jointSpring.targetPosition < 0)
             {
-                jointSpring.targetPosition += 20f* Time.fixedDeltaTime;
+                jointSpring.targetPosition += 20f;
                 if (jointSpring.targetPosition == 0)
                 {
                     jointSpring.targetPosition = 0;

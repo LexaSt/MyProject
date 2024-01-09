@@ -20,6 +20,6 @@ public class TestChoiseControl : MonoBehaviour
     private void Update()
     {
         A = PlayerPrefs.GetInt("A");
-        print(A);      
+       // print(A);      
     }
 }
